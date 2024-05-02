@@ -77,8 +77,44 @@ const aadjacentElementsProduct = (array) => {
 aadjacentElementsProduct([1, 5, 10, 9]);
 
 // Task 9
+const nbYear = (p0, percent, aug, p) => {
+  let year = 0;
+  let res = 0;
+  for (let i = 0; i < 20; i++) {
+    year += 1;
+    if (res < p) {
+      res += p0 + p0 * (percent / 100) + aug;
+    } else {
+      return year;
+    }
+  }
+  return year;
+};
+console.log(nbYear(1500, 5, 100, 5000));
 // Task 10
+const reverseLetter = (str) =>
+  str
+    .replace(/[^a-z]/gim, "")
+    .split("")
+    .reverse()
+    .join("");
+reverseLetter("12ddas__wewd++");
 // Task 11
+const SequenceSum = (count) => {
+  let s = 0;
+  let res = 0;
+  if (count < 0) {
+    return `${s} = ${count}`;
+  }
+
+  for (let i = 1; i <= count; i++) {
+    res += i;
+    s = `${s}+${i}`;
+  }
+
+  return `${s} = ${res}`;
+};
+console.log(SequenceSum(-1));
 // Task 12
 // Task 13
 // Task 14
