@@ -104,7 +104,10 @@ const SequenceSum = (count) => {
   let s = 0;
   let res = 0;
   if (count < 0) {
-    return `${s} = ${count}`;
+    return `${count}<${res}`;
+  }
+  if (count === 0) {
+    return "0=0";
   }
 
   for (let i = 1; i <= count; i++) {
@@ -114,8 +117,87 @@ const SequenceSum = (count) => {
 
   return `${s} = ${res}`;
 };
-console.log(SequenceSum(-1));
+SequenceSum(0);
 // Task 12
+const leastLarger = (array, i) => {
+  let d = array.filter((el) => array[i] < el);
+  let min = Math.min(...d);
+  return array.findIndex((el) => el === min);
+};
+leastLarger([1, 3, 5, 2, 4], 0);
 // Task 13
+
+class Fighter {
+  constructor(name, health, damagePerAttack) {
+    this.name = name;
+    this.health = health;
+    this.damagePerAttack = damagePerAttack;
+  }
+}
+
+const declareWinner = (fighter1, fighter2, firstAttacker) => {
+  let oneAtt = 0;
+  let twoAtt = 0;
+  switch (fighter1.health > 0 && fighter2.health > 0) {
+    case fighter1.name === firstAttacker:
+      oneAtt += 1;
+      fighter2.health = fighter2.health - fighter1.damagePerAttack;
+    case fighter2.name === firstAttacker:
+      twoAtt += 1;
+      fighter1.health = fighter1.health - fighter2.damagePerAttack;
+    case oneAtt > twoAtt:
+      twoAtt += 1;
+      fighter1.health = fighter1.health - fighter2.damagePerAttack;
+    case twoAtt > oneAtt:
+      oneAtt += 1;
+      fighter2.health = fighter2.health - fighter1.damagePerAttack;
+    case twoAtt === oneAtt:
+  }
+  return [fighter1.health, fighter2.health];
+};
+
+console.log(
+  declareWinner(new Fighter("Egor", 30, 3), new Fighter("Vlad", 20, 5), "Vlad")
+);
+
+// const vowelIndices = (word) => {
+//  return word.replace(/[^aoeiuy]/gmi, '')
+
+// }
+// console.log(vowelIndices('super'));
+// const vowelIndices = (word) => {
+//  let fff =  word.replace(/[^aoeiuy]/gmi, '').split('')
+//  return word.split('').filter((el, i) => console.log( el) === console.log(fff[i]))
+// }
+//  console.log(vowelIndices('super'));
+// const vowelIndices = (word) => {
+//   let ind = []
+//     for(let i = 0; i < word.length; i++) {
+//       if(word[i] === 'u' || word[i] === 'e' || word[i] === 'a' || word[i] === 'i' || word[i] === 'y' || word[i] === 'o' ) {
+//         ind.push(i+1)
+//       }
+//     }
+//     return ind
+// }
+// vowelIndices('supercalifragilisticexpialidocious')
+
+const vowelIndices = (word) => {
+  let ind = [];
+  word
+    .split("")
+    .filter((el, i) =>
+      el === "u" ||
+      el === "e" ||
+      el === "a" ||
+      el === "i" ||
+      el === "y" ||
+      el === "o"
+        ? ind.push(i + 1)
+        : ""
+    );
+  return ind;
+};
+vowelIndices("apple");
 // Task 14
+
 // Task 15
