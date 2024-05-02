@@ -234,3 +234,10 @@ function pipeFix(numbers) {
 console.log(pipeFix([1, 2, 3, 5, 6, 8, 9]));
 
 // Task 15
+
+const findLongest = (array) => {
+  let len = array.map((el) => `${el}`.length);
+  let maxLen = Math.max(...len);
+  return array.find((el) => `${el}`.length === maxLen);
+};
+findLongest([8, 900, 500]);
