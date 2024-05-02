@@ -184,6 +184,7 @@ console.log(
 const vowelIndices = (word) => {
   let ind = [];
   word
+    .toLowerCase()
     .split("")
     .filter((el, i) =>
       el === "u" ||
@@ -199,5 +200,37 @@ const vowelIndices = (word) => {
 };
 vowelIndices("apple");
 // Task 14
+// const findChildren = (santasList, children) => {
+//   return children
+//     .map((el) => santasList.find((il) => el === il))
+//     .filter((el) => el !== undefined).sort();
+// };
+// console.log(
+//   findChildren(
+//     ["Jason", "James", "Johnson"], ["Jason", "James", "JJ"]
+//   )
+// );
+const findChildren = (santasList, children) => {
+  let list = [];
+  for (let i = 0; i < children.length; i++) {
+    santasList.find((el) => (el === children[i] ? list.push(el) : ""));
+  }
+  return list.sort();
+};
+console.log(
+  findChildren(
+    ["Jason", "Jackson", "Jordan", "Johnny"],
+    ["Jason", "Jordan", "Jennifer"]
+  )
+);
+
+function pipeFix(numbers) {
+  let res = [];
+  for (let i = numbers[0]; i <= numbers[numbers.length - 1]; i++) {
+    res.push(i);
+  }
+  return res;
+}
+console.log(pipeFix([1, 2, 3, 5, 6, 8, 9]));
 
 // Task 15
